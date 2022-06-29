@@ -1,0 +1,21 @@
+from configparser import LegacyInterpolation
+from PySimpleGUI import PySimpleGUI as sg
+
+# Layort 
+sg.theme('Reddit')
+estrutura = [
+    [sg.Text('Usuário'), sg.Input(key = 'usuario', size = (20,1))],
+    [sg.Text('senha'), sg.Input(key = 'senha', password_char = '*', size = (20,1))],
+    [sg.Checkbox('Salvar o login?')],
+    [sg.Button('Entrar')]
+]
+# janela
+janela = sg.Window('Tela de Cadastro', estrutura)
+# ler os eventos
+while True:
+    eventos, valores = janela.read()
+    if eventos == sg.WINDOW_CLOSED:
+        break
+    if eventos == 'Entrar':
+        if valores['usuario'] == 'José Victor' and valores['senha'] == '12345678':
+            print('Bem Vindo!')
